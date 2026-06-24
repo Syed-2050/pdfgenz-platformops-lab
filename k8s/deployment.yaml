@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdfgenz-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pdfgenz
+  template:
+    metadata:
+      labels:
+        app: pdfgenz
+    spec:
+      containers:
+        - name: pdfgenz
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

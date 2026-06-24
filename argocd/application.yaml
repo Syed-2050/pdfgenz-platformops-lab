@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pdfgenz-platformops-lab
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Syed-2050/pdfgenz-platformops-lab.git
+    targetRevision: main
+    path: helm/pdfgenz
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: pdfgenz
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
