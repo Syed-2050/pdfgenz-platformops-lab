@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: nginx
-  tag: alpine
+  repository: pdfgenz-platformops-lab
+  tag: v2
 
 service:
   type: ClusterIP

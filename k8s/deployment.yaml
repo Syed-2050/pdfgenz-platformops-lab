@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: pdfgenz
-          image: nginx:alpine
+          image: pdfgenz-platformops-lab:v1
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
