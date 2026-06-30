@@ -289,6 +289,7 @@ Potential future improvements include:
 **Syed Arif Ali**
 
 Cloud & DevOps Engineer 
+
 passionate about Kubernetes, Platform Engineering, Infrastructure Automation, Cloud Technologies, and AI-powered DevOps.
 
 GitHub:
