@@ -9,5 +9,4 @@ This project includes DevSecOps concepts such as:
 - Container image scanning
 - Infrastructure as Code review
 
-In real DevSecOps work:
-Security is added inside the pipeline, not only after deployment.
+
