@@ -315,7 +315,7 @@ Cloud & DevOps Engineer
 
 passionate about Cloud Computing, Kubernetes, Platform Engineering, Infrastructure Automation and AI-powered DevOps.
 
-GitHub: https://github.com/Syed-2050
+GitHub: https://github.com/Syed-2050                                                                                                                                
 Email : Syedarif1907@gmail.com
 ---
 
