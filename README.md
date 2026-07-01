@@ -1,100 +1,126 @@
+
 # 🚀 PDFGenZ PlatformOps Lab
 
-> A production-inspired DevOps project demonstrating containerization, Kubernetes orchestration, GitOps, CI/CD automation, and monitoring using modern cloud-native tools.
+> **Production-Inspired DevOps Platform** built using Docker, Kubernetes, Helm, GitHub Actions, ArgoCD, Prometheus, Grafana and AWS EC2 deployment workflow.
+
+![Platform](https://img.shields.io/badge/Platform-DevOps-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5)
+![Helm](https://img.shields.io/badge/Helm-Package_Manager-0F1689)
+![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D)
+![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C)
+![Grafana](https://img.shields.io/badge/Visualization-Grafana-F46800)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF)
 
 ---
 
 # 📖 Overview
 
-PDFGenZ PlatformOps Lab is a hands-on DevOps project built to simulate a modern application deployment workflow.
+PDFGenZ PlatformOps Lab is an end-to-end DevOps portfolio project demonstrating how modern applications are built, containerized, deployed, managed, monitored and automated using industry-standard cloud-native technologies.
 
-The project demonstrates how an application can be containerized, deployed to Kubernetes, managed with Helm, synchronized using GitOps (ArgoCD), monitored with Prometheus and Grafana, and automated using GitHub Actions.
+The project combines CI/CD, GitOps, Kubernetes deployment strategies, monitoring and cloud deployment concepts into a single practical workflow.
 
-This project was built to gain practical experience with technologies commonly used by Cloud Engineers, DevOps Engineers, and Platform Engineers.
+---
+
+# 🎯 Objectives
+
+- Build a production-inspired DevOps platform
+- Learn Kubernetes deployment lifecycle
+- Implement GitHub Actions CI
+- Deploy applications using Helm
+- Practice GitOps using ArgoCD
+- Monitor workloads using Prometheus & Grafana
+- Understand deployment automation and rollback
 
 ---
 
 # 🏗 Architecture
 
-```
+```text
 Developer
     │
     ▼
- GitHub Repository
+Git
     │
     ▼
- GitHub Actions (CI)
+GitHub Repository
+    │
+    ├──────────────► GitHub Actions (CI)
+    │                     │
+    │                     ▼
+    │              Docker Image Build
+    │                     │
+    │                     ▼
+    │           AWS EC2 Deployment Workflow
     │
     ▼
- Docker Image
+ArgoCD (GitOps)
     │
     ▼
- Kubernetes Cluster (Kind)
+Kubernetes Cluster (Kind)
     │
- ┌──┴────────────┐
- ▼               ▼
-Helm         ArgoCD (GitOps)
- │               │
- └──────┬────────┘
-        ▼
- PDFGenZ Application
-        │
-        ▼
- Prometheus
-        │
-        ▼
- Grafana Dashboard
+    ▼
+Helm Release
+    │
+    ▼
+PDFGenZ Application
+    │
+    ▼
+Prometheus
+    │
+    ▼
+Grafana Dashboards
 ```
 
 ---
 
-# 🛠 Technologies Used
+# 🚀 DevOps Workflow
 
-| Category | Technologies |
-|----------|--------------|
-| Operating System | Linux (WSL Ubuntu) |
-| Version Control | Git, GitHub |
+1. Develop application
+2. Commit using Git
+3. Push to GitHub
+4. GitHub Actions executes CI workflow
+5. Docker image is built
+6. Helm deploys application
+7. Kubernetes runs application
+8. ArgoCD synchronizes Git with the cluster
+9. Prometheus collects metrics
+10. Grafana visualizes infrastructure health
+
+---
+
+# 🛠 Technologies
+
+| Category | Technology |
+|-----------|------------|
+| OS | Linux (WSL Ubuntu) |
+| SCM | Git, GitHub |
 | Containerization | Docker |
 | Orchestration | Kubernetes (Kind) |
-| Package Management | Helm |
-| CI/CD | GitHub Actions |
+| Package Manager | Helm |
+| Cloud | AWS EC2 (Deployment Workflow) |
+| CI | GitHub Actions |
 | GitOps | ArgoCD |
 | Monitoring | Prometheus |
-| Visualization | Grafana |
+| Dashboards | Grafana |
 | Web Server | Nginx |
 
 ---
 
-# 📂 Project Structure
+# 📂 Repository Structure
 
-```
+```text
 pdfgenz-platformops-lab/
-
-├── .github/
-│   └── workflows/
 │
+├── .github/workflows/
 ├── app/
-│   └── index.html
-│
 ├── argocd/
-│   └── application.yaml
-│
 ├── helm/
 │   └── pdfgenz/
-│
 ├── k8s/
-│   ├── deployment.yaml
-│   └── service.yaml
-│
 ├── monitoring/
-│   ├── prometheus.md
-│   ├── grafana.md
-│   └── dashboards.md
-│
 ├── logging/
-│
 ├── security/
-│
 ├── Dockerfile
 ├── .gitignore
 └── README.md
@@ -102,30 +128,27 @@ pdfgenz-platformops-lab/
 
 ---
 
-# 🚀 Features
+# ⚙️ Prerequisites
 
-- Containerized application using Docker
-- Kubernetes Deployment & Service
-- Helm Chart deployment
-- Rolling Update demonstration
-- Helm Rollback demonstration
-- GitHub Actions CI pipeline
-- GitOps deployment using ArgoCD
-- Prometheus monitoring
-- Grafana dashboards
-- Production-inspired project structure
+- Docker Desktop
+- WSL Ubuntu
+- kubectl
+- Kind
+- Helm
+- Git
+- GitHub Account
 
 ---
 
 # 🐳 Docker
 
-Build Docker image
+Build
 
 ```bash
 docker build -t pdfgenz-platformops-lab .
 ```
 
-Run locally
+Run
 
 ```bash
 docker run -p 8080:80 pdfgenz-platformops-lab
@@ -135,7 +158,7 @@ docker run -p 8080:80 pdfgenz-platformops-lab
 
 # ☸ Kubernetes
 
-Deploy application
+Deploy
 
 ```bash
 kubectl apply -f k8s/deployment.yaml
@@ -165,41 +188,50 @@ Upgrade
 helm upgrade pdfgenz ./helm/pdfgenz
 ```
 
+History
+
+```bash
+helm history pdfgenz
+```
+
 Rollback
 
 ```bash
 helm rollback pdfgenz <revision>
 ```
 
-View release history
+---
 
-```bash
-helm history pdfgenz
-```
+# ☁ AWS EC2 Deployment Workflow
+
+The repository contains a GitHub Actions workflow demonstrating deployment to an AWS EC2 instance through SSH.
+
+The EC2 instance is intentionally kept stopped when not in use to reduce AWS Free Tier usage and avoid unnecessary costs.
 
 ---
 
-# 🔄 GitHub Actions CI
+# 🔄 GitHub Actions
 
-The project includes a GitHub Actions workflow that demonstrates Continuous Integration by:
+Implemented Continuous Integration workflow that:
 
-- Triggering on code push
-- Building Docker images
-- Validating project changes
-
-Workflow location
-
-```
-.github/workflows/
-```
+- Runs on push
+- Validates project
+- Builds Docker image
+- Supports deployment workflow
 
 ---
 
 # 🚀 GitOps with ArgoCD
 
-ArgoCD continuously monitors the GitHub repository and synchronizes Kubernetes resources with the desired state stored in Git.
+ArgoCD continuously compares the desired state stored in Git with the live Kubernetes cluster.
 
-This demonstrates a GitOps workflow where Git acts as the single source of truth for deployments.
+Features:
+
+- Git as Source of Truth
+- Sync Status
+- Drift Detection
+- Manual Synchronization
+- Automated Deployment Workflow
 
 ---
 
@@ -207,43 +239,35 @@ This demonstrates a GitOps workflow where Git acts as the single source of truth
 
 ## Prometheus
 
-Prometheus collects Kubernetes metrics including:
+Collects:
 
-- CPU
-- Memory
-- Node Health
-- Pod Status
+- CPU Metrics
+- Memory Metrics
+- Node Metrics
+- Pod Metrics
 - Resource Utilization
-
----
 
 ## Grafana
 
-Grafana visualizes metrics collected by Prometheus.
-
-Example metrics include:
+Visualizes:
 
 - CPU Usage
 - Memory Usage
-- Disk Usage
 - Network Traffic
-- Node Uptime
+- Disk Usage
+- Node Health
 
 ---
 
-# 🔄 Rolling Updates
+# 🔁 Rolling Updates
 
-The project demonstrates Kubernetes Rolling Updates using Helm.
-
-Application changes can be deployed with zero downtime by upgrading the Helm release.
+Helm upgrades demonstrate zero/minimal downtime deployment using Kubernetes rolling updates.
 
 ---
 
-# ↩ Rollback
+# ↩ Helm Rollback
 
-Helm provides version history and instant rollback.
-
-Example
+Rollback to a previous stable release:
 
 ```bash
 helm rollback pdfgenz 3
@@ -251,7 +275,7 @@ helm rollback pdfgenz 3
 
 ---
 
-# 📚 Skills Demonstrated
+# 💡 Skills Demonstrated
 
 - Linux Administration
 - Git & GitHub
@@ -259,28 +283,27 @@ helm rollback pdfgenz 3
 - Kubernetes
 - Helm
 - GitHub Actions
+- CI/CD
 - GitOps
 - ArgoCD
 - Prometheus
 - Grafana
-- CI/CD Concepts
-- Cloud-Native Deployment
-- Infrastructure Automation
+- Deployment Automation
+- Monitoring & Observability
+- Cloud Deployment Concepts
 
 ---
 
 # 🔮 Future Enhancements
 
-Potential future improvements include:
-
-- Terraform Infrastructure as Code
-- AWS EKS Deployment
-- Horizontal Pod Autoscaler (HPA)
+- Terraform
+- AWS EKS
+- Horizontal Pod Autoscaler
 - Ingress Controller
-- Centralized Logging (ELK/Loki)
-- DevSecOps Security Scanning
-- Trivy Container Scanning
-- SonarQube Integration
+- Loki / ELK Logging
+- Trivy Image Scanning
+- SonarQube
+- DevSecOps
 
 ---
 
@@ -290,12 +313,10 @@ Potential future improvements include:
 
 Cloud & DevOps Engineer 
 
-passionate about Kubernetes, Platform Engineering, Infrastructure Automation, Cloud Technologies, and AI-powered DevOps.
+passionate about Cloud Computing, Kubernetes, Platform Engineering, Infrastructure Automation and AI-powered DevOps.
 
-GitHub:
-https://github.com/Syed-2050
-
+GitHub: https://github.com/Syed-2050
+Email : Syedarif1907@gmail.com
 ---
 
-# ⭐ If you found this project useful, consider giving it a star.
-
+⭐ If you found this repository useful, consider giving it a star.
